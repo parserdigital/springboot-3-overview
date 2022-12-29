@@ -7,7 +7,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Car")
+@Table(name = "cars")
 @Data
 public class Car {
 
@@ -15,7 +15,7 @@ public class Car {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "make")
+    @Column(name = "brand")
     private String make;
 
     @Column(name = "fuel_type")
