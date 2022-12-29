@@ -11,6 +11,7 @@ spring:
     password: admin
   jpa:
     show-sql: true
+    open-in-view: on
   liquibase:
     change-log: classpath:db/db-changelog.yaml
   jackson:

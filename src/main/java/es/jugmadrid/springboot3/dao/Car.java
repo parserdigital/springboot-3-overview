@@ -2,21 +2,24 @@ package es.jugmadrid.springboot3.dao;
 
 import es.jugmadrid.springboot3.controller.criteria.FuelType;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cars")
-@Data
+@Getter
+@Setter
 public class Car {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "brand")
-    private String make;
+    private String brand;
 
     @Column(name = "fuel_type")
     @Enumerated(EnumType.STRING)

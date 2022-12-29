@@ -1,5 +1,6 @@
 package es.jugmadrid.springboot3.mapper;
 
+import es.jugmadrid.springboot3.controller.CreateCarRequest;
 import es.jugmadrid.springboot3.controller.criteria.CarsSearchCriteria;
 import es.jugmadrid.springboot3.dao.Car;
 import es.jugmadrid.springboot3.dao.filter.CarsFilter;
@@ -24,6 +25,8 @@ public interface CarMapper {
     CarDto toCarDto(Car car);
 
     List<CarDto> toCarDtos(List<Car> cars);
+
+    Car toCarEntity(CreateCarRequest createCarRequest);
 
     default CarsPageResponse<CarDto> toCarsPageResponse(Page<Car> page) {
         CarsPageResponse<CarDto> pageResponse = new CarsPageResponse<>();

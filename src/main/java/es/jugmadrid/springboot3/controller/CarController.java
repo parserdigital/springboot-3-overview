@@ -6,9 +6,7 @@ import es.jugmadrid.springboot3.model.CarDto;
 import es.jugmadrid.springboot3.model.CarsPageResponse;
 import es.jugmadrid.springboot3.service.CarFilterService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CarController {
@@ -28,4 +26,15 @@ public class CarController {
         return carFilterService.searchCars(carMapper.toFilter(criteria), criteria.getPage(), criteria.getSize());
     }
 
+    @GetMapping(value = "/cars/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    CarDto getCars(@PathVariable Integer id) {
+        return carFilterService.searchCar(id);
+    }
+
+    @PostMapping (value = "/cars")
+    @ResponseStatus(HttpStatus.CREATED)
+    CarDto createCar(@RequestBody CreateCarRequest request) {
+        return carFilterService.createCar(request);
+    }
 }
