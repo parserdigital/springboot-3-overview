@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTable
+      author: Iván Pérez
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            path: db/scripts/init_db.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

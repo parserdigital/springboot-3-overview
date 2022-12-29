@@ -1,0 +1,27 @@
+version: '2'
+services:
+  app:
+    container_name: springboot-app
+    image: springboot-3-overview
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL= jdbc:postgresql://jugmadrid-db:5432/jug-madrid
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    container_name: jugmadrid-db
+    image: postgres:15.1
+    volumes:
+      - sample_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=jug-madrid
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+
+volumes:
+  sample_db: {}

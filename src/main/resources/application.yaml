@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: springboot-3-overview
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jug-madrid
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/db-changelog.yaml
+  jackson:
+    default-property-inclusion: non_null
