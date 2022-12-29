@@ -11,7 +11,8 @@ import java.math.BigDecimal;
 public class CarDto {
 
     private int id;
-    private String make;
+    private String brand;
+    private String model;
     private FuelType fuelType;
     private int numberOfDoors;
     private BigDecimal price;

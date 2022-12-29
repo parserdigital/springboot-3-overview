@@ -8,9 +8,10 @@ CREATE TABLE IF NOT EXISTS cars
 (
     id            INTEGER NOT NULL DEFAULT nextval('car_id_seq') PRIMARY KEY,
     brand         VARCHAR(40) NOT NULL,
-    fuel_type     VARCHAR(40) NOT NULL,
+    model         VARCHAR(40) NOT NULL,
+    fuel_type     VARCHAR(20) NOT NULL,
     num_of_doors  INTEGER,
-    price         BIGINT NOT NULL,
+    price         NUMERIC(10,2) NOT NULL,
     creation_date TIMESTAMP,
     last_modified TIMESTAMP
 );

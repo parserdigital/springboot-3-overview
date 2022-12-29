@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public class CreateCarRequest {
 
     private String brand;
+    private String model;
     private Integer numberOfDoors;
     private FuelType fuelType;
     private BigDecimal price;
