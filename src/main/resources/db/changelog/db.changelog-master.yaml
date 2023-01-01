@@ -6,7 +6,7 @@ databaseChangeLog:
         - sqlFile:
             dbms: postgresql
             encoding: utf8
-            path: db/scripts/init_db.sql
+            path: changelog/init_db.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true

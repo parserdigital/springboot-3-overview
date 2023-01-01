@@ -2,7 +2,7 @@ version: '3.1'
 services:
   app:
     container_name: springboot-app
-    image: springboot-3-overview
+    image: springboot-3-overview-jvm
     build: .
     environment:
       - SPRING_DATASOURCE_URL= jdbc:postgresql://jugmadrid-db:5432/jug-madrid
