@@ -13,6 +13,6 @@ spring:
     show-sql: true
     open-in-view: on
   liquibase:
-    change-log: classpath:db/db-changelog.yaml
+    change-log: classpath:db/changelog/db.changelog-master.yaml
   jackson:
     default-property-inclusion: non_null

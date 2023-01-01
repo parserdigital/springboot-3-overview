@@ -1,0 +1,33 @@
+[
+  {
+    "name": "liquibase.change.core.CreateSequenceChange",
+    "allPublicMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "liquibase.change.core.SQLFileChange",
+    "allPublicMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "es.jugmadrid.springboot3.controller.criteria.CarsSearchCriteria",
+    "allPublicMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.util.ArrayList",
+    "methods": [
+      {
+        "name": "<init>"
+      }
+    ]
+  },
+  {
+    "name": "org.postgresql.util.PGobject",
+    "methods": [
+      {
+        "name": "<init>"
+      }
+    ]
+  }
+]
