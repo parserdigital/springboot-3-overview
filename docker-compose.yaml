@@ -1,13 +1,23 @@
 version: '3.1'
 services:
-  app:
-    container_name: springboot-app
-    image: springboot-3-overview-jvm
-    build: .
+  app-jvm:
+    container_name: app-jvm
+    image: ivanklp/image-jvm
     environment:
-      - SPRING_DATASOURCE_URL= jdbc:postgresql://jugmadrid-db:5432/jug-madrid
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://jugmadrid-db:5432/jug-madrid
+      - SPRING_LIQUIBASE_ENABLED=false
     ports:
       - "8080:8080"
+    depends_on:
+      - db
+  app-native:
+    container_name: app-native
+    image: ivanklp/image-native
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://jugmadrid-db:5432/jug-madrid
+      - SPRING_LIQUIBASE_ENABLED=false
+    ports:
+      - "8081:8080"
     depends_on:
       - db
   db:
@@ -22,6 +32,5 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
-
 volumes:
   sample_db: {}

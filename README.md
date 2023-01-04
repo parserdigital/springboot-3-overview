@@ -29,4 +29,15 @@ If no more liquibase processing is needed, you can skip it by passing this argum
 
 
 # Execute containers
-docker-compose up --build
+
+## Create Docker image for JVM mode
+```
+docker build -f Dockerfile -t ivanklp/image-jvm .
+```
+
+## Create Docker image for Native mode
+```
+ docker build --platform=linux/arm64 -f ./Dockerfile.native -t ivanklp/image-native .
+```
+
+docker-compose up
