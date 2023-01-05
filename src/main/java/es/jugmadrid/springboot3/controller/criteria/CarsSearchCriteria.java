@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class CarsSearchCriteria {
 
     private String brand;
+    private String model;
     private FuelType fuelType;
     private Integer numberOfDoors;
     private BigDecimal priceFrom;

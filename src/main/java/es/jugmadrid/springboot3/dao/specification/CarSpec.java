@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 
 public class CarSpec {
 
-    public static final String MAKE = "make";
+    public static final String BRAND = "brand";
+    public static final String MODEL = "model";
     public static final String FUEL_TYPE = "fuelType";
     public static final String NUMBER_OF_DOORS = "numberOfDoors";
     public static final String PRICE = "price";
@@ -20,15 +21,20 @@ public class CarSpec {
 
     public static Specification<Car> filterBy(CarsFilter carsFilter) {
         return Specification
-                .where(hasMake(carsFilter.make()))
+                .where(hasBrand(carsFilter.brand()))
+                .and(hasModel(carsFilter.model()))
                 .and(hasFuelType(carsFilter.fuelType()))
                 .and(hasNumberOfDoors(carsFilter.numberOfDoors()))
                 .and(hasPriceGreaterThan(carsFilter.priceFrom()))
                 .and(hasPriceLessThan(carsFilter.priceTo()));
     }
 
-    private static Specification<Car> hasMake(String make) {
-        return ((root, query, cb) -> make == null || make.isEmpty() ? cb.conjunction() : cb.equal(root.get(MAKE), make));
+    private static Specification<Car> hasBrand(String brand) {
+        return ((root, query, cb) -> brand == null || brand.isEmpty() ? cb.conjunction() : cb.equal(root.get(BRAND), brand));
+    }
+
+    private static Specification<Car> hasModel(String model) {
+        return ((root, query, cb) -> model == null || model.isEmpty() ? cb.conjunction() : cb.equal(root.get(MODEL), model));
     }
 
     private static Specification<Car> hasFuelType(FuelType fuelType) {
