@@ -37,7 +37,7 @@ docker build -f Dockerfile -t ivanklp/image-jvm .
 
 ## Create Docker image for Native mode
 ```
- docker build --platform=linux/arm64 -f ./Dockerfile.native -t ivanklp/image-native .
+docker build --platform=linux/arm64 -f ./Dockerfile.native -t ivanklp/image-native .
 ```
 
 docker-compose up

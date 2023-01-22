@@ -13,7 +13,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     ProblemDetail handleServiceException(ServiceException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(e.getErrorCode().getHttpStatus(), e.getDescription());
-        problemDetail.setTitle(e.getMessage());
+        problemDetail.setTitle(e.getErrorCode().getHttpStatus().name());
         problemDetail.setType(URI.create("https://example.com/exceptions"));
         return problemDetail;
     }

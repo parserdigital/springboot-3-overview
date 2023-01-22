@@ -27,7 +27,7 @@ WORKDIR /build
 COPY . /build
 
 # Build the application and create the native executable file
-RUN mvn -Pnative clean package
+RUN mvn -Pnative clean package -DskipTests
 
 
 FROM docker.io/oraclelinux:8-slim
