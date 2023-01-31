@@ -9,6 +9,7 @@ import es.jugmadrid.springboot3.exception.ServiceException;
 import es.jugmadrid.springboot3.mapper.CarMapperImpl;
 import es.jugmadrid.springboot3.model.CarDto;
 import es.jugmadrid.springboot3.model.CarsPageResponse;
+import io.micrometer.observation.ObservationRegistry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,7 +44,7 @@ public class CarFilterServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        underTest = new CarFilterServiceImpl(carRepository, new CarMapperImpl());
+        underTest = new CarFilterServiceImpl(carRepository, new CarMapperImpl(), ObservationRegistry.NOOP);
     }
 
     @Test

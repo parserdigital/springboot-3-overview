@@ -9,6 +9,9 @@ import es.jugmadrid.springboot3.exception.ServiceException;
 import es.jugmadrid.springboot3.mapper.CarMapper;
 import es.jugmadrid.springboot3.model.CarDto;
 import es.jugmadrid.springboot3.model.CarsPageResponse;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.observation.annotation.Observed;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -22,13 +25,21 @@ public class CarFilterServiceImpl implements CarFilterService {
 
     private final CarRepository carRepository;
     private final CarMapper carMapper;
+    private final ObservationRegistry observationRegistry;
 
     public CarFilterServiceImpl(CarRepository carRepository,
-                                CarMapper carMapper) {
+                                CarMapper carMapper,
+                                ObservationRegistry observationRegistry) {
         this.carRepository = carRepository;
         this.carMapper = carMapper;
+        this.observationRegistry = observationRegistry;
     }
 
+    @Observed(
+            name = "get.cars",
+            contextualName = "get-list-of-cars",
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"}
+    )
     @Override
     public CarsPageResponse<CarDto> searchCars(CarsFilter filter, int page, int size) {
         Specification<Car> spec = CarSpec.filterBy(filter);
@@ -36,13 +47,29 @@ public class CarFilterServiceImpl implements CarFilterService {
         return carMapper.toCarsPageResponse(pageResult);
     }
 
+    /*@Observed(
+            name = "get.car",
+            contextualName = "get-car-by-id",
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"}
+    )*/
     @Override
     public CarDto searchCar(Integer carId) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new ServiceException(RESOURCE_NOT_FOUND, format("no car found with id %d", carId)));
-        return carMapper.toCarDto(car);
+        return Observation
+                .createNotStarted("get.car", observationRegistry)
+                .contextualName("get-car-by-id")
+                .lowCardinalityKeyValue("class.name", "CarFilterServiceImpl")
+                .observe(() -> {
+                    Car car = carRepository.findById(carId)
+                            .orElseThrow(() -> new ServiceException(RESOURCE_NOT_FOUND, format("no car found with id %d", carId)));
+                    return carMapper.toCarDto(car);
+                });
     }
 
+    @Observed(
+            name = "create.car",
+            contextualName = "create-new-car",
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"}
+    )
     @Override
     public CarDto createCar(CreateCarRequest createCarRequest) {
         Car car = carMapper.toCarEntity(createCarRequest);

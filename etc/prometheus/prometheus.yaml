@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 2s
+  evaluation_interval: 2s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+  - job_name: 'app-jvm'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['app-jvm:8080']
+  - job_name: 'app-native'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['app-native:8081']
