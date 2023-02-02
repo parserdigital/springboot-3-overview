@@ -1,15 +1,19 @@
-version: '3.1'
+version: '3.4'
+
+x-common-config: &common-variables
+  SPRING_PROFILES_ACTIVE: container
+  SPRING_DATASOURCE_URL: jdbc:postgresql://jugmadrid-db:5432/jug-madrid
+  SPRING_LIQUIBASE_ENABLED: true
+  MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://tempo:9411/api/v2/spans
 
 services:
   app-jvm:
     container_name: app-jvm
     image: ivanklp/image-jvm
     environment:
-      - SPRING_APPLICATION_NAME=app-jvm
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://jugmadrid-db:5432/jug-madrid
-      - SPRING_LIQUIBASE_ENABLED=true
-      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411/api/v2/spans
-      - MANAGEMENT_METRICS_TAGS_APPLICATION=app-jvm
+      <<: *common-variables
+      SPRING_APPLICATION_NAME: app-jvm
+      MANAGEMENT_METRICS_TAGS_APPLICATION: app-jvm
     ports:
       - "8080:8080"
     depends_on:
@@ -19,12 +23,10 @@ services:
     container_name: app-native
     image: ivanklp/image-native
     environment:
-      - SPRING_APPLICATION_NAME=app-native
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://jugmadrid-db:5432/jug-madrid
-      - SPRING_LIQUIBASE_ENABLED=false
-      - SERVER_PORT=8081
-      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411/api/v2/spans
-      - MANAGEMENT_METRICS_TAGS_APPLICATION=app-native
+      <<: *common-variables
+      SERVER_PORT: 8081
+      SPRING_APPLICATION_NAME: app-native
+      MANAGEMENT_METRICS_TAGS_APPLICATION: app-native
     ports:
       - "8081:8081"
     depends_on:
