@@ -12,4 +12,6 @@ public interface CarFilterService {
     CarDto searchCar(Integer carId);
 
     CarDto createCar(CreateCarRequest createCarRequest);
+
+    void deleteCar(Integer carId);
 }

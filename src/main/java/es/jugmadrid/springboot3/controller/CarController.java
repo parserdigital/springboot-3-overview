@@ -44,4 +44,11 @@ public class CarController {
         logger.info("Create a new car");
         return carFilterService.createCar(request);
     }
+
+    @DeleteMapping(value = "/cars/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteCar(@PathVariable Integer id) {
+        logger.info("Delete an existing car");
+        carFilterService.deleteCar(id);
+    }
 }

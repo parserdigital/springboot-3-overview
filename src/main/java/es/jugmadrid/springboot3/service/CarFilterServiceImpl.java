@@ -35,11 +35,9 @@ public class CarFilterServiceImpl implements CarFilterService {
         this.observationRegistry = observationRegistry;
     }
 
-    @Observed(
-            name = "get.cars",
+    @Observed(name = "get.cars",
             contextualName = "get-list-of-cars",
-            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"}
-    )
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"})
     @Override
     public CarsPageResponse<CarDto> searchCars(CarsFilter filter, int page, int size) {
         Specification<Car> spec = CarSpec.filterBy(filter);
@@ -60,19 +58,27 @@ public class CarFilterServiceImpl implements CarFilterService {
                 .lowCardinalityKeyValue("class.name", "CarFilterServiceImpl")
                 .observe(() -> {
                     Car car = carRepository.findById(carId)
-                            .orElseThrow(() -> new ServiceException(RESOURCE_NOT_FOUND, format("no car found with id %d", carId)));
+                            .orElseThrow(() -> new ServiceException(RESOURCE_NOT_FOUND, format("car with id %d not found", carId)));
                     return carMapper.toCarDto(car);
                 });
     }
 
-    @Observed(
-            name = "create.car",
+    @Observed(name = "create.car",
             contextualName = "create-new-car",
-            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"}
-    )
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"})
     @Override
     public CarDto createCar(CreateCarRequest createCarRequest) {
         Car car = carMapper.toCarEntity(createCarRequest);
         return carMapper.toCarDto(carRepository.save(car));
+    }
+
+    @Observed(name = "delete.car",
+            contextualName = "delete-car",
+            lowCardinalityKeyValues = {"class.name", "CarFilterServiceImpl"})
+    @Override
+    public void deleteCar(Integer carId) {
+        Car car = carRepository.findById(carId)
+                .orElseThrow(() -> new ServiceException(RESOURCE_NOT_FOUND, format("car with id %d not found", carId)));
+        carRepository.delete(car);
     }
 }

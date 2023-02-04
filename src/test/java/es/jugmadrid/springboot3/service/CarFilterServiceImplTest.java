@@ -83,7 +83,7 @@ public class CarFilterServiceImplTest {
 
         assertThatExceptionOfType(ServiceException.class).isThrownBy(
                         () -> underTest.searchCar(1))
-                .withMessage("no car found with id 1")
+                .withMessage("car with id 1 not found")
                 .matches(e -> ErrorCode.RESOURCE_NOT_FOUND.equals(e.getErrorCode())
                 );
     }

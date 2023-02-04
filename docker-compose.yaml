@@ -3,7 +3,7 @@ version: '3.4'
 x-common-config: &common-variables
   SPRING_PROFILES_ACTIVE: container
   SPRING_DATASOURCE_URL: jdbc:postgresql://jugmadrid-db:5432/jug-madrid
-  SPRING_LIQUIBASE_ENABLED: true
+  SPRING_LIQUIBASE_ENABLED: false
   MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://tempo:9411/api/v2/spans
 
 services:

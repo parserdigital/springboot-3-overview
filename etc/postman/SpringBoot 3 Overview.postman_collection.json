@@ -48,8 +48,17 @@
 		{
 			"name": "Create Car",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"brand\": \"bmw\",\n    \"model\": \"m4\",\n    \"numberOfDoors\": 4,\n    \"price\": 120000,\n    \"fuelType\": \"GASOLINE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/cars",
 					"protocol": "http",
@@ -59,6 +68,26 @@
 					"port": "8080",
 					"path": [
 						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cars/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cars",
+						"1"
 					]
 				}
 			},
