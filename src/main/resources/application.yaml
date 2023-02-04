@@ -17,11 +17,14 @@ spring:
   jackson:
     default-property-inclusion: non_null
 
+springdoc:
+  enable-native-support: true
+
 management:
   endpoints:
     web:
       exposure:
-        include: health, info, prometheus
+        include: prometheus
   endpoint:
     loggers:
       enabled: false

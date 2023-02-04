@@ -15,7 +15,7 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "java.util.ArrayList",
+    "name": "org.postgresql.util.PGobject",
     "methods": [
       {
         "name": "<init>"
@@ -23,7 +23,12 @@
     ]
   },
   {
-    "name": "org.postgresql.util.PGobject",
+    "name":"com.sun.management.OperatingSystemMXBean",
+    "allPublicMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.util.ArrayList",
     "methods": [
       {
         "name": "<init>"
