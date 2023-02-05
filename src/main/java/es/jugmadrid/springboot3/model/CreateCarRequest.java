@@ -1,6 +1,5 @@
-package es.jugmadrid.springboot3.controller;
+package es.jugmadrid.springboot3.model;
 
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
 import lombok.Data;
 
 import java.math.BigDecimal;

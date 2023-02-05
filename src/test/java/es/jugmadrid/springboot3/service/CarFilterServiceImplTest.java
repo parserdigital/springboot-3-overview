@@ -1,6 +1,6 @@
 package es.jugmadrid.springboot3.service;
 
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
+import es.jugmadrid.springboot3.model.FuelType;
 import es.jugmadrid.springboot3.dao.Car;
 import es.jugmadrid.springboot3.dao.filter.CarsFilter;
 import es.jugmadrid.springboot3.dao.repository.CarRepository;
@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import static es.jugmadrid.springboot3.controller.criteria.FuelType.GASOLINE;
+import static es.jugmadrid.springboot3.model.FuelType.GASOLINE;
 import static es.jugmadrid.springboot3.utils.TestFactoryUtils.buildCar;
 import static es.jugmadrid.springboot3.utils.TestFactoryUtils.buildCreateCarRequest;
 import static org.assertj.core.api.Assertions.assertThat;

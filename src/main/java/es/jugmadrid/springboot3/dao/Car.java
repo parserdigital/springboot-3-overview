@@ -1,6 +1,6 @@
 package es.jugmadrid.springboot3.dao;
 
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
+import es.jugmadrid.springboot3.model.FuelType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

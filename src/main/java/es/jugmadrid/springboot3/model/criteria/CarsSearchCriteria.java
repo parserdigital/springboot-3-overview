@@ -1,5 +1,6 @@
-package es.jugmadrid.springboot3.controller.criteria;
+package es.jugmadrid.springboot3.model.criteria;
 
+import es.jugmadrid.springboot3.model.FuelType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

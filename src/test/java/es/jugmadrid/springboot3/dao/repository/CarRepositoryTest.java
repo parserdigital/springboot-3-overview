@@ -1,6 +1,6 @@
 package es.jugmadrid.springboot3.dao.repository;
 
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
+import es.jugmadrid.springboot3.model.FuelType;
 import es.jugmadrid.springboot3.dao.Car;
 import es.jugmadrid.springboot3.utils.TestFactoryUtils;
 import org.assertj.core.api.Condition;

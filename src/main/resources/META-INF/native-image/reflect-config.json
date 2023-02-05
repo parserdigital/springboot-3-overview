@@ -10,7 +10,7 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "es.jugmadrid.springboot3.controller.criteria.CarsSearchCriteria",
+    "name": "es.jugmadrid.springboot3.model.criteria.CarsSearchCriteria",
     "allPublicMethods": true,
     "allDeclaredConstructors": true
   },

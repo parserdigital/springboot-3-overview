@@ -1,6 +1,7 @@
 package es.jugmadrid.springboot3.controller;
 
-import es.jugmadrid.springboot3.controller.criteria.CarsSearchCriteria;
+import es.jugmadrid.springboot3.model.CreateCarRequest;
+import es.jugmadrid.springboot3.model.criteria.CarsSearchCriteria;
 import es.jugmadrid.springboot3.mapper.CarMapper;
 import es.jugmadrid.springboot3.model.CarDto;
 import es.jugmadrid.springboot3.model.CarsPageResponse;

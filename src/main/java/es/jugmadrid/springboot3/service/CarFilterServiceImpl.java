@@ -1,6 +1,6 @@
 package es.jugmadrid.springboot3.service;
 
-import es.jugmadrid.springboot3.controller.CreateCarRequest;
+import es.jugmadrid.springboot3.model.CreateCarRequest;
 import es.jugmadrid.springboot3.dao.Car;
 import es.jugmadrid.springboot3.dao.filter.CarsFilter;
 import es.jugmadrid.springboot3.dao.repository.CarRepository;

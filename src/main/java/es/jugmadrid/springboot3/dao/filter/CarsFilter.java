@@ -1,6 +1,6 @@
 package es.jugmadrid.springboot3.dao.filter;
 
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
+import es.jugmadrid.springboot3.model.FuelType;
 
 import java.math.BigDecimal;
 

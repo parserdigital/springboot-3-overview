@@ -1,7 +1,7 @@
 package es.jugmadrid.springboot3.utils;
 
-import es.jugmadrid.springboot3.controller.CreateCarRequest;
-import es.jugmadrid.springboot3.controller.criteria.FuelType;
+import es.jugmadrid.springboot3.model.CreateCarRequest;
+import es.jugmadrid.springboot3.model.FuelType;
 import es.jugmadrid.springboot3.dao.Car;
 import es.jugmadrid.springboot3.dao.filter.CarsFilter;
 import es.jugmadrid.springboot3.dao.specification.CarSpec;
