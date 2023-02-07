@@ -9,7 +9,7 @@ x-common-config: &common-variables
 services:
   app-jvm:
     container_name: app-jvm
-    image: ivanklp/image-jvm
+    image: {YOUR_DOCKER_REGISTRY}/image-jvm
     environment:
       <<: *common-variables
       SPRING_APPLICATION_NAME: app-jvm
@@ -21,7 +21,7 @@ services:
       - loki
   app-native:
     container_name: app-native
-    image: ivanklp/image-native
+    image: {YOUR_DOCKER_REGISTRY}/image-native
     environment:
       <<: *common-variables
       SERVER_PORT: 8081
